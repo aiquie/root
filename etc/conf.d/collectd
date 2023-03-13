@@ -1,0 +1,2 @@
+COLLECTD_USER="collectd"
+COLLECTD_GROUP="nogroup"

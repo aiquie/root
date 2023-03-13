@@ -1,0 +1,17 @@
+#!/bin/sh
+
+HOSTNAME="${COLLECTD_HOSTNAME:-localhost}"
+INTERVAL="${COLLECTD_INTERVAL:-60}"
+
+NAME="$(basename $0 .exec)"
+
+IIO_PATH="/sys/bus/i2c/drivers/tsl2563/2-0029/iio:device2"
+
+while sleep "$INTERVAL"; do
+    ILL=$(cat $IIO_PATH/in_illuminance0_input)
+    INT_IR=$(cat $IIO_PATH/in_intensity_ir_raw)
+    INT_BOTH=$(cat $IIO_PATH/in_intensity_both_raw)
+
+    echo "PUTVAL \"$HOSTNAME/$NAME/gauge-illuminance\" interval=$INTERVAL N:$ILL"
+    echo "PUTVAL \"$HOSTNAME/$NAME/spectrum-intensity\" interval=$INTERVAL N:$INT_BOTH:$INT_IR"
+done
