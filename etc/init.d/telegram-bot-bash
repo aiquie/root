@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+
+TGBB_DSC="telegram bot bash"
+
+run_bot_cmd()
+{
+	cd ${TGBB_HOME}
+	su ${TGBB_USER} -c "./bashbot.sh $@" >/dev/null
+}
+
+depend()
+{
+	need net
+}
+
+start()
+{
+	run_bot_cmd start
+
+	ebegin "Start $TGBB_DSC"
+
+	run_bot_cmd status && eend 0 || eend 1
+}
+
+stop()
+{
+	run_bot_cmd stop
+
+	ebegin "Stop $TGBB_DSC"
+
+	run_bot_cmd status && eend 1 || eend 0
+}
+
