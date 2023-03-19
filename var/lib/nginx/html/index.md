@@ -1,7 +1,7 @@
 Welcome to Nokia N900!
 ======================
 
-[Collectd-Web](/collectd-web)
+[Collectd](/collectd)
 
 [PostmarketOS](/mirror/wiki.postmarketos.org/wiki/Nokia_N900_\(nokia-n900\))
 
