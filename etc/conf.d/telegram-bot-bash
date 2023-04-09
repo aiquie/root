@@ -1,2 +1,3 @@
 TGBB_USER="user"
+TGBB_SHELL="bash"
 TGBB_HOME="/var/lib/telegram-bot-bash"

@@ -4,8 +4,8 @@ TGBB_DSC="telegram bot bash"
 
 run_bot_cmd()
 {
-	cd ${TGBB_HOME}
-	su ${TGBB_USER} -c "./bashbot.sh $@" >/dev/null
+	TGBB_CMD="cd ${TGBB_HOME} && ./bashbot.sh $@"
+	su - ${TGBB_USER} -c "${TGBB_SHELL} -lc \"${TGBB_CMD}\"" >/dev/null
 }
 
 depend()
