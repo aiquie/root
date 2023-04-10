@@ -77,6 +77,14 @@ else
 			return 1
 			;;
 
+        '/collectd-web'* | '/cw'*)
+            MESSAGE=${MESSAGE/\/cw/\/collectd-web}
+            ${MESSAGE:1} | while read P; do
+                [[ $P =~ ^/ ]] && send_file "${CHAT[ID]}" $P && rm $P || echo $P
+            done | send_normal_message "${CHAT[ID]}" "$(cat)"
+            return 1
+            ;;
+
         *)
             send_normal_message "${CHAT[ID]}" "$(msg_as_cmd "${MESSAGE}")"
             ;;
