@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+
+description="Message daemon"
+command="${MSGD_HOME}/env/msgd.sh"
+command_background=true
+pidfile="/run/$RC_SVCNAME.pid"
+
