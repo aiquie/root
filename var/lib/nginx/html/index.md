@@ -3,7 +3,7 @@ Welcome to Nokia N900!
 
 [Collectd](/collectd)
 
-[BroadcastDNS](/bdns)
+[Address](/address)
 
 [PostmarketOS](/mirror/wiki.postmarketos.org/wiki/Nokia_N900_\(nokia-n900\))
 
