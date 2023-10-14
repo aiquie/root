@@ -1,7 +1,7 @@
 #!/sbin/openrc-run
 
 description="BroadCast Short Messages Daemon"
-command="${MSGD_HOME}/env/bcsmd.sh"
+command="${MSGD_HOME}/bin/bcsmd.sh"
 command_background=true
 pidfile="/run/$RC_SVCNAME.pid"
 
