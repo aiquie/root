@@ -60,7 +60,7 @@ else
 	case "${MESSAGE}" in
 		##################
 		# example command, replace them by your own
-		'/echo'*) # example echo command
+		'/echo '*) # example echo command
 			send_normal_message "${CHAT[ID]}" "${MESSAGE}"
 			;;
 
@@ -68,18 +68,13 @@ else
 		# command overwrite examples
 		# return 0 -> run default command afterwards
 		# return 1 -> skip possible default commands
-		'/info'*) # output date in front of regular info
+		'/info '*) # output date in front of regular info
 			send_normal_message "${CHAT[ID]}" "$(date)"
 			return 0
 			;;
-		'/kickme'*) # this will replace the /kickme command
-			send_markdownv2_mesage "${CHAT[ID]}" "This bot will *not* kick you!"
-			return 1
-			;;
 
-        '/collectd-web'* | '/cw'*)
-            MESSAGE=${MESSAGE/\/cw/\/collectd-web}
-            ${MESSAGE:1} | while read P; do
+        '/cw '*)
+            collectd-web "${MESSAGE#/cw }" | while read P; do
                 [[ $P =~ ^/ ]] && send_file "${CHAT[ID]}" $P && rm $P || echo $P
             done | send_normal_message "${CHAT[ID]}" "$(cat)"
             return 1
@@ -87,11 +82,13 @@ else
 
         *)
             send_normal_message "${CHAT[ID]}" "$(msg_as_cmd "${MESSAGE}")"
+            return 1
             ;;
 	esac
-     }
+    
+    } # mycommands()
 
-     mycallbacks() {
+    mycallbacks() {
 	#######################
 	# callbacks from buttons attached to messages will be  processed here
 	case "${iBUTTON[USER_ID]}+${iBUTTON[CHAT_ID]}" in
@@ -103,8 +100,8 @@ else
 		answer_callback_query "${iBUTTON[ID]}" "${callback_answer}"
 		;;
 	esac
-     }
-     myinlines() {
+    }
+    myinlines() {
 	#######################
 	# this fuinction is called only if you has set INLINE=1 !!
 	# shellcheck disable=SC2128
@@ -119,7 +116,7 @@ else
 			answer_inline_multi "${iQUERY[ID]}" "$(my_image_search "${search}")"
 			;;
 	esac
-     }
+    }
 
     #####################
     # place your processing functions here
