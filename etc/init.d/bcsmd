@@ -2,6 +2,7 @@
 
 description="BroadCast Short Messages Daemon"
 command="${MSGD_HOME}/bin/bcsmd.sh"
+command_user="${MSGD_USER}"
 command_background=true
 pidfile="/run/$RC_SVCNAME.pid"
 

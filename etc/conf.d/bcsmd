@@ -1,2 +1,5 @@
 MSGD_HOME="/var/lib/suvi"
+MSGD_USER="user"
+
+PATH="/home/user/.bin:${PATH}"
 
