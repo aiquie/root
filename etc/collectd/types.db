@@ -155,6 +155,7 @@ job_stats               value:DERIVE:0:U
 latency                 value:GAUGE:0:U
 links                   value:GAUGE:0:U
 load                    shortterm:GAUGE:0:5000, midterm:GAUGE:0:5000, longterm:GAUGE:0:5000
+load_avg                now:GAUGE:0:1, all:GAUGE:0:1
 max_ec                  value:GAUGE:0:U
 media                   value:GAUGE:0:18446744073709551615
 memory_bandwidth        value:DERIVE:0:U
