@@ -1,0 +1,17 @@
+#!/bin/sh
+
+HOSTNAME="${COLLECTD_HOSTNAME:-localhost}"
+INTERVAL="${COLLECTD_INTERVAL:-60}"
+
+PLUG="$(basename $0 .exec)"
+INST="bq27200"
+
+BAT_PATH="/sys/class/power_supply/bq27200-0/"
+
+while sleep "$INTERVAL"; do
+    CAPACITY=$(cat $BAT_PATH/capacity)
+    CURRENT=$(awk '{ print $0 / 1000000 }' $BAT_PATH/current_now)
+
+    echo "PUTVAL \"$HOSTNAME/$PLUG-$INST/percent-capacity\" interval=$INTERVAL N:$CAPACITY"
+    echo "PUTVAL \"$HOSTNAME/$PLUG-$INST/current\" interval=$INTERVAL N:$CURRENT"
+done
