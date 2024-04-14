@@ -12,6 +12,6 @@ while sleep "$INTERVAL"; do
     INT_IR=$(cat $IIO_PATH/in_intensity_ir_raw)
     INT_BOTH=$(cat $IIO_PATH/in_intensity_both_raw)
 
-    echo "PUTVAL \"$HOSTNAME/$NAME/gauge-illuminance\" interval=$INTERVAL N:$ILL"
+    echo "PUTVAL \"$HOSTNAME/$NAME/illuminance\" interval=$INTERVAL N:$ILL"
     echo "PUTVAL \"$HOSTNAME/$NAME/spectrum-intensity\" interval=$INTERVAL N:$INT_BOTH:$INT_IR"
 done
