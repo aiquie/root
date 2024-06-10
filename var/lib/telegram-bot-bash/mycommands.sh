@@ -74,7 +74,7 @@ else
             ;;
 
         '/cw '*)
-            collectd-web "${MESSAGE#/cw }" | while read P; do
+            collectd-web ${MESSAGE#/cw } | while read P; do
                 [[ $P =~ ^/ ]] && send_file "${CHAT[ID]}" $P && rm $P || echo $P
             done | send_normal_message "${CHAT[ID]}" "$(cat)"
             return 1
