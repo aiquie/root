@@ -3,3 +3,5 @@ MSGD_USER="user"
 
 PATH="/home/user/.bin:${PATH}"
 
+rc_need="loopback"
+

@@ -1,2 +1,5 @@
 COLLECTD_USER="collectd"
 COLLECTD_GROUP="nogroup"
+
+rc_need="loopback"
+
