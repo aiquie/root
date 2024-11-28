@@ -1,4 +1,4 @@
-MSGD_HOME="/var/lib/suvi"
+MSGD_HOME="/var/lib/esp32-devs"
 MSGD_USER="user"
 
 PATH="/home/user/.bin:${PATH}"
