@@ -58,12 +58,6 @@ else
     # uncommet to fix first letter upper case because of smartphone auto correction
     #[[ "${MESSAGE}" =~  ^/[[:upper:]] ]] && MESSAGE="${MESSAGE:0:1}$(tr '[:upper:]' '[:lower:]' <<<"${MESSAGE:1:1}")${MESSAGE:2}"
     case "${MESSAGE}" in
-        ##################
-        # example command, replace them by your own
-        '/echo '*) # example echo command
-            send_normal_message "${CHAT[ID]}" "${MESSAGE}"
-            ;;
-
         ##########
         # command overwrite examples
         # return 0 -> run default command afterwards
@@ -71,6 +65,11 @@ else
         '/info '*) # output date in front of regular info
             send_normal_message "${CHAT[ID]}" "$(date)"
             return 0
+            ;;
+
+        '/start')
+            send_normal_message "${CHAT[ID]}" "$(fastfetch --logo none)"
+            return 1
             ;;
 
         '/cw '*)
